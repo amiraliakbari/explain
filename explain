@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo "                   $(tput setaf 2)$(tput bold)** Project Comprehension Toolkit **$(tput sgr0)"
+echo ""
+
+case $1 in
+fixtures*)
+  echo "$(tput setaf 3)$(tput bold)Fixtures:$(tput sgr0)"
+  find . -path '*/fixtures/*.json' | grep -v './venv/' | rev | cut -d'/' -f1 | rev | sort | cut -d'.' -f1 | uniq
+  echo ""
+  echo "$(tput setaf 3)$(tput bold)Fixtures files:$(tput sgr0)"
+  find . -path '*/fixtures/*.json' | grep -v './venv/' | grep --color -e '.*/fixtures/'
+  ;;
+*)
+  echo "No idea! sorry..."
+  ;;
+esac
+
+echo ""
